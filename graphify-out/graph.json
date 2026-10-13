@@ -1,323 +1,392 @@
 {
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
   "nodes": [
     {
-      "id": "e2e_preflight_spec",
       "label": "preflight.spec.ts",
       "file_type": "code",
       "source_file": "e2e/preflight.spec.ts",
       "source_location": "L1",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "e2e_preflight_spec",
+      "community": 5,
+      "community_name": "e2e",
+      "norm_label": "preflight.spec.ts"
     },
     {
-      "id": "e2e_todo_spec",
       "label": "todo.spec.ts",
       "file_type": "code",
       "source_file": "e2e/todo.spec.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2
+      "community": 4,
+      "id": "e2e_todo_spec",
+      "community_name": "e2e/todo.spec.ts",
+      "norm_label": "todo.spec.ts"
     },
     {
-      "id": "e2e_todo_spec_capturebrowsererrors",
       "label": "captureBrowserErrors()",
       "file_type": "code",
       "source_file": "e2e/todo.spec.ts",
       "source_location": "L3",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "e2e_todo_spec_capturebrowsererrors",
+      "community": 4,
+      "community_name": "e2e/todo.spec.ts",
+      "norm_label": "capturebrowsererrors()"
     },
     {
-      "id": "package",
       "label": "package.json",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L1",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "package.json"
     },
     {
-      "id": "package_name",
       "label": "name",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L2",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "name"
     },
     {
-      "id": "package_version",
       "label": "version",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L3",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "version"
     },
     {
-      "id": "package_private",
       "label": "private",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L4",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "private"
     },
     {
-      "id": "package_description",
       "label": "description",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L5",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_description",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "description"
     },
     {
-      "id": "package_scripts",
       "label": "scripts",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L6",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 2,
+      "community_name": "package.json",
+      "norm_label": "scripts"
     },
     {
-      "id": "package_scripts_test",
       "label": "test",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L7",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 2,
+      "community_name": "package.json",
+      "norm_label": "test"
     },
     {
-      "id": "package_scripts_test_e2e",
       "label": "test:e2e",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L8",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_scripts_test_e2e",
+      "community": 2,
+      "community_name": "package.json",
+      "norm_label": "test:e2e"
     },
     {
-      "id": "package_devdependencies",
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L10",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "devdependencies"
     },
     {
-      "id": "package_devdependencies_playwright_test",
       "label": "@playwright/test",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L11",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "package_devdependencies_playwright_test",
+      "community": 0,
+      "community_name": "package.json",
+      "norm_label": "@playwright/test"
     },
     {
-      "id": "playwright_config",
       "label": "playwright.config.ts",
       "file_type": "code",
       "source_file": "playwright.config.ts",
       "source_location": "L1",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "playwright_config",
+      "community": 3,
+      "community_name": "playwright.config.ts",
+      "norm_label": "playwright.config.ts"
     },
     {
-      "id": "playwright_config_defineconfig",
       "label": "{ defineConfig }",
       "file_type": "code",
       "source_file": "playwright.config.ts",
       "source_location": "L1",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "playwright_config_defineconfig",
+      "community": 3,
+      "community_name": "playwright.config.ts",
+      "norm_label": "{ defineconfig }"
     },
     {
-      "id": "playwright_config_path",
       "label": "path",
       "file_type": "code",
       "source_file": "playwright.config.ts",
       "source_location": "L2",
-      "_origin": "ast"
+      "_origin": "ast",
+      "id": "playwright_config_path",
+      "community": 3,
+      "community_name": "playwright.config.ts",
+      "norm_label": "path"
     },
     {
-      "id": "tests_todo_test",
       "label": "todo.test.mjs",
       "file_type": "code",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1
+      "community": 1,
+      "id": "tests_todo_test",
+      "community_name": "tests/todo.test.mjs",
+      "norm_label": "todo.test.mjs"
     },
     {
-      "id": "tests_todo_test_createelement",
       "label": "createElement()",
       "file_type": "code",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 1
+      "community": 1,
+      "id": "tests_todo_test_createelement",
+      "community_name": "tests/todo.test.mjs",
+      "norm_label": "createelement()"
     },
     {
-      "id": "tests_todo_test_loadapp",
       "label": "loadApp()",
       "file_type": "code",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L54",
       "_origin": "ast",
-      "community": 1
+      "community": 1,
+      "id": "tests_todo_test_loadapp",
+      "community_name": "tests/todo.test.mjs",
+      "norm_label": "loadapp()"
     },
     {
-      "id": "tests_todo_test_findbytestid",
       "label": "findByTestId()",
       "file_type": "code",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L81",
       "_origin": "ast",
-      "community": 1
+      "community": 1,
+      "id": "tests_todo_test_findbytestid",
+      "community_name": "tests/todo.test.mjs",
+      "norm_label": "findbytestid()"
     }
   ],
   "links": [
     {
-      "source": "e2e_todo_spec",
-      "target": "e2e_todo_spec_capturebrowsererrors",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "e2e/todo.spec.ts",
       "source_location": "L3",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "e2e_todo_spec",
+      "target": "e2e_todo_spec_capturebrowsererrors",
+      "confidence_score": 1.0
     },
     {
-      "source": "package",
-      "target": "package_name",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
-      "target": "package_version",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
-      "target": "package_private",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
-      "target": "package_description",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L5",
-      "weight": 1.0
-    },
-    {
+      "weight": 1.0,
       "source": "package",
-      "target": "package_scripts",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L6",
-      "weight": 1.0
+      "target": "package_description",
+      "confidence_score": 1.0
     },
     {
-      "source": "package_scripts",
-      "target": "package_scripts_test",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "package_scripts",
-      "target": "package_scripts_test_e2e",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
-      "target": "package_devdependencies",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L10",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_devdependencies",
+      "confidence_score": 1.0
     },
     {
-      "source": "package_devdependencies",
-      "target": "package_devdependencies_playwright_test",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_e2e",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
       "source_location": "L11",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_playwright_test",
+      "confidence_score": 1.0
     },
     {
-      "source": "playwright_config",
-      "target": "playwright_config_defineconfig",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "playwright.config.ts",
       "source_location": "L1",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "playwright_config",
+      "target": "playwright_config_defineconfig",
+      "confidence_score": 1.0
     },
     {
-      "source": "playwright_config",
-      "target": "playwright_config_path",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "playwright.config.ts",
       "source_location": "L2",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "playwright_config",
+      "target": "playwright_config_path",
+      "confidence_score": 1.0
     },
     {
-      "source": "tests_todo_test",
-      "target": "tests_todo_test_createelement",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L11",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "tests_todo_test",
+      "target": "tests_todo_test_createelement",
+      "confidence_score": 1.0
     },
     {
-      "source": "tests_todo_test",
-      "target": "tests_todo_test_loadapp",
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/todo.test.mjs",
-      "source_location": "L54",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_todo_test",
-      "target": "tests_todo_test_findbytestid",
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L81",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "tests_todo_test",
+      "target": "tests_todo_test_findbytestid",
+      "confidence_score": 1.0
     },
     {
-      "source": "tests_todo_test_loadapp",
-      "target": "tests_todo_test_createelement",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/todo.test.mjs",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "tests_todo_test",
+      "target": "tests_todo_test_loadapp",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/todo.test.mjs",
       "source_location": "L60",
-      "weight": 1.0
+      "weight": 1.0,
+      "source": "tests_todo_test_loadapp",
+      "target": "tests_todo_test_createelement",
+      "confidence_score": 1.0
     }
   ],
-  "metadata": {
-    "built_at": "2026-10-13T12:03:39.623697+00:00",
-    "version": "graph_update-v1",
-    "codebase_root": "C:\\artifacts-v2\\T0132PcJVCRTV000113102611485068\\developer",
-    "force": true,
-    "files_scanned": 6
-  }
+  "hyperedges": [],
+  "built_at_commit": "f9f4f67258b028b407e6262660b9bf7ae1d50e0a"
 }

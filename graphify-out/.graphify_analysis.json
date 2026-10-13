@@ -1,0 +1,36 @@
+{
+  "communities": {
+    "0": [
+      "package",
+      "package_description",
+      "package_devdependencies",
+      "package_devdependencies_playwright_test",
+      "package_name",
+      "package_private",
+      "package_version"
+    ],
+    "1": [
+      "tests_todo_test",
+      "tests_todo_test_createelement",
+      "tests_todo_test_findbytestid",
+      "tests_todo_test_loadapp"
+    ],
+    "2": [
+      "package_scripts",
+      "package_scripts_test",
+      "package_scripts_test_e2e"
+    ],
+    "3": [
+      "playwright_config",
+      "playwright_config_defineconfig",
+      "playwright_config_path"
+    ],
+    "4": [
+      "e2e_todo_spec",
+      "e2e_todo_spec_capturebrowsererrors"
+    ],
+    "5": [
+      "e2e_preflight_spec"
+    ]
+  }
+}
