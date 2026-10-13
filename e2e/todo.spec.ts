@@ -1,15 +1,19 @@
 import { test, expect } from '@playwright/test';
 
-test('todo lifecycle supports add, complete, delete, and empty state without browser errors', async ({ page }) => {
-  const browserErrors: string[] = [];
+function captureBrowserErrors(page: import('@playwright/test').Page): string[] {
+  const errors: string[] = [];
   page.on('console', (message) => {
     if (message.type() === 'error' || message.type() === 'warning') {
-      browserErrors.push(`${message.type()}: ${message.text()}`);
+      errors.push(`${message.type()}: ${message.text()}`);
     }
   });
-  page.on('pageerror', (error) => browserErrors.push(`pageerror: ${error.message}`));
+  page.on('pageerror', (error) => errors.push(`pageerror: ${error.message}`));
+  return errors;
+}
 
-  await page.goto('file://' + process.cwd() + '/index.html');
+test('adds tasks by button and Enter with trimmed titles and sequential IDs', async ({ page }) => {
+  const browserErrors = captureBrowserErrors(page);
+  await page.goto('/index.html');
   await expect(page.getByRole('heading', { name: 'Todo App' })).toBeVisible();
   await expect(page.getByTestId('empty-state')).toHaveText('No tasks yet.');
   await expect(page.getByTestId('todo-list')).toBeEmpty();
@@ -25,15 +29,46 @@ test('todo lifecycle supports add, complete, delete, and empty state without bro
   await page.getByTestId('todo-input').press('Enter');
   await expect(page.getByTestId('todo-item-2')).toBeVisible();
   await expect(page.getByTestId('todo-title-2')).toHaveText('Walk dog');
-
-  await page.getByTestId('todo-input').fill('   ');
-  await page.getByTestId('add-button').click();
   await expect(page.getByTestId('todo-list').locator('li')).toHaveCount(2);
+  expect(browserErrors).toEqual([]);
+});
+
+test('blank submissions are silent no-ops and preserve the empty state', async ({ page }) => {
+  const browserErrors = captureBrowserErrors(page);
+  await page.goto('/index.html');
+  for (const value of ['', '   ']) {
+    await page.getByTestId('todo-input').fill(value);
+    await page.getByTestId('add-button').click();
+    await expect(page.getByTestId('todo-list')).toBeEmpty();
+    await expect(page.getByTestId('empty-state')).toBeVisible();
+    await expect(page.getByTestId('empty-state')).toHaveText('No tasks yet.');
+  }
+  expect(browserErrors).toEqual([]);
+});
+
+test('completion toggles only the selected task and updates its title styling', async ({ page }) => {
+  const browserErrors = captureBrowserErrors(page);
+  await page.goto('/index.html');
+  await page.getByTestId('todo-input').fill('Buy milk');
+  await page.getByTestId('add-button').click();
+  await page.getByTestId('todo-input').fill('Walk dog');
+  await page.getByTestId('add-button').click();
 
   await page.getByTestId('todo-checkbox-1').check();
   await expect(page.getByTestId('todo-title-1')).toHaveCSS('text-decoration-line', 'line-through');
+  await expect(page.getByTestId('todo-checkbox-2')).not.toBeChecked();
   await page.getByTestId('todo-checkbox-1').uncheck();
   await expect(page.getByTestId('todo-title-1')).not.toHaveCSS('text-decoration-line', 'line-through');
+  expect(browserErrors).toEqual([]);
+});
+
+test('deletion removes only the selected task and restores the empty state', async ({ page }) => {
+  const browserErrors = captureBrowserErrors(page);
+  await page.goto('/index.html');
+  await page.getByTestId('todo-input').fill('Buy milk');
+  await page.getByTestId('add-button').click();
+  await page.getByTestId('todo-input').fill('Walk dog');
+  await page.getByTestId('add-button').click();
 
   await page.getByTestId('todo-delete-1').click();
   await expect(page.getByTestId('todo-item-1')).toHaveCount(0);
@@ -45,16 +80,9 @@ test('todo lifecycle supports add, complete, delete, and empty state without bro
   expect(browserErrors).toEqual([]);
 });
 
-test('page exposes accessible task controls and resets state on reload', async ({ page }) => {
-  const browserErrors: string[] = [];
-  page.on('console', (message) => {
-    if (message.type() === 'error' || message.type() === 'warning') {
-      browserErrors.push(`${message.type()}: ${message.text()}`);
-    }
-  });
-  page.on('pageerror', (error) => browserErrors.push(`pageerror: ${error.message}`));
-
-  await page.goto('file://' + process.cwd() + '/index.html');
+test('task controls have accessible names and in-memory state resets on reload', async ({ page }) => {
+  const browserErrors = captureBrowserErrors(page);
+  await page.goto('/index.html');
   await page.getByTestId('todo-input').fill('Read a book');
   await page.getByTestId('add-button').click();
   await expect(page.getByRole('checkbox', { name: 'Mark Read a book complete' })).toBeVisible();

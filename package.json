@@ -1,0 +1,13 @@
+{
+  "name": "minimal-todo-fixture",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser test fixture; the app itself has no runtime dependencies or build step.",
+  "scripts": {
+    "test": "node --test tests/todo.test.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

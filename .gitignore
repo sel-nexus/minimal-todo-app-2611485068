@@ -9,6 +9,8 @@ __pycache__/
 .env.*.local
 .DS_Store
 coverage/
+test-results/
+playwright-report/
 PLAN.md
 todos.yaml
 developer_metadata.json
