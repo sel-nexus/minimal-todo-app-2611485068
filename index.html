@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small, deterministic todo list for browser testing.">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>Todo App</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #24251f;
+      background: #f7f6f2;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      --ink: #24251f;
+      --muted: #686960;
+      --line: #d9d8d0;
+      --paper: #fffefa;
+      --accent: #526b45;
+      --accent-hover: #405536;
+      --focus: #8b5e2a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      padding: 72px 24px;
+    }
+
+    main {
+      width: min(100%, 560px);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.25rem, 7vw, 3.25rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1.08;
+    }
+
+    .intro {
+      margin: 14px 0 32px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .entry-form {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    #todo-input {
+      min-width: 0;
+      flex: 1;
+      padding: 13px 14px;
+      border: 1px solid #aaa99f;
+      border-radius: 5px;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+      line-height: 1.35;
+    }
+
+    #todo-input::placeholder { color: #77786f; }
+
+    #add-button {
+      padding: 12px 20px;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    #add-button:hover { background: var(--accent-hover); }
+
+    #todo-input:focus-visible,
+    #add-button:focus-visible,
+    .delete-button:focus-visible,
+    .task-checkbox:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .list-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: 38px 0 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .list-heading h2 {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .list-heading span {
+      color: var(--muted);
+      font-size: 0.8125rem;
+    }
+
+    #empty-state {
+      margin: 0;
+      padding: 22px 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    #todo-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .todo-item {
+      display: flex;
+      min-height: 58px;
+      align-items: center;
+      gap: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .task-checkbox {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin: 0;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .todo-title {
+      min-width: 0;
+      flex: 1;
+      overflow-wrap: anywhere;
+      line-height: 1.45;
+    }
+
+    .todo-title.completed {
+      color: var(--muted);
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+
+    .delete-button {
+      padding: 7px 9px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: transparent;
+      color: #6b4038;
+      font: inherit;
+      font-size: 0.8125rem;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      border-color: var(--line);
+      background: #f0eee8;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">A small list, a clear mind</p>
+    <h1>Todo App</h1>
+    <p class="intro">Keep track of what needs doing. Add a task, then mark it done when you’re ready.</p>
+
+    <form class="entry-form" id="todo-form">
+      <label for="todo-input" class="visually-hidden">Task</label>
+      <input id="todo-input" data-testid="todo-input" type="text" placeholder="What needs doing?" autocomplete="off">
+      <button id="add-button" data-testid="add-button" type="submit">Add</button>
+    </form>
+
+    <section aria-labelledby="tasks-heading">
+      <div class="list-heading">
+        <h2 id="tasks-heading">Your tasks</h2>
+        <span id="task-count" aria-live="polite">0 tasks</span>
+      </div>
+      <p id="empty-state" data-testid="empty-state">No tasks yet.</p>
+      <ul id="todo-list" data-testid="todo-list"></ul>
+    </section>
+  </main>
+
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script>
+    (() => {
+      const todos = [];
+      let nextId = 1;
+      const form = document.getElementById('todo-form');
+      const input = document.getElementById('todo-input');
+      const emptyState = document.getElementById('empty-state');
+      const todoList = document.getElementById('todo-list');
+      const taskCount = document.getElementById('task-count');
+
+      function renderTodos() {
+        todoList.replaceChildren();
+        emptyState.hidden = todos.length !== 0;
+        taskCount.textContent = `${todos.length} ${todos.length === 1 ? 'task' : 'tasks'}`;
+
+        for (const todo of todos) {
+          const item = document.createElement('li');
+          item.dataset.testid = `todo-item-${todo.id}`;
+          item.className = 'todo-item';
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = todo.completed;
+          checkbox.className = 'task-checkbox';
+          checkbox.dataset.testid = `todo-checkbox-${todo.id}`;
+          checkbox.setAttribute('aria-label', `Mark ${todo.title} ${todo.completed ? 'incomplete' : 'complete'}`);
+          checkbox.addEventListener('change', () => {
+            todo.completed = checkbox.checked;
+            renderTodos();
+          });
+
+          const title = document.createElement('span');
+          title.dataset.testid = `todo-title-${todo.id}`;
+          title.className = todo.completed ? 'todo-title completed' : 'todo-title';
+          title.textContent = todo.title;
+
+          const deleteButton = document.createElement('button');
+          deleteButton.type = 'button';
+          deleteButton.className = 'delete-button';
+          deleteButton.dataset.testid = `todo-delete-${todo.id}`;
+          deleteButton.textContent = 'Delete';
+          deleteButton.setAttribute('aria-label', `Delete ${todo.title}`);
+          deleteButton.addEventListener('click', () => {
+            const index = todos.findIndex((task) => task.id === todo.id);
+            if (index !== -1) {
+              todos.splice(index, 1);
+              renderTodos();
+            }
+          });
+
+          item.append(checkbox, title, deleteButton);
+          todoList.append(item);
+        }
+      }
+
+      function addTodo(title) {
+        const trimmedTitle = title.trim();
+        if (trimmedTitle === '') return false;
+
+        todos.push({ id: nextId, title: trimmedTitle, completed: false });
+        nextId += 1;
+        renderTodos();
+        return true;
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (addTodo(input.value)) input.value = '';
+      });
+
+      renderTodos();
+    })();
+  </script>
+</body>
+</html>
